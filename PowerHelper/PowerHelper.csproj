@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<AssemblyName>PowerHelper</AssemblyName>
+		<RootNamespace>PowerHelper</RootNamespace>
+		<Product>PowerHelper</Product>
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="power.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="power.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Hardcodet.Wpf.TaskbarNotification.Net6" Version="1.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Converter\" />
+	</ItemGroup>
+
+</Project>
