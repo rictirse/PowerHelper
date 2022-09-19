@@ -10,10 +10,6 @@ namespace PowerHelper.ViewModel
             get => acValue;
             set 
             {
-                if (acValue == value) return;
-#if !DEBUG
-                PowerCfgCli.SetCurrentAcPROCTHROTTLEMAX(value);
-#endif
                 SetProperty(ref acValue, value);
                 AcClockSpeed = $"{((value / 100000f) * MaxClockSpeed):F2}GHz";
             }
@@ -24,16 +20,22 @@ namespace PowerHelper.ViewModel
             get => dcValue;
             set
             {
-                if (dcValue == value) return;
-#if !DEBUG
-                PowerCfgCli.SetCurrentDcPROCTHROTTLEMAX(value);
-#endif
                 SetProperty(ref dcValue, value);
                 DcClockSpeed = $"{((value / 100000f) * MaxClockSpeed):F2}GHz";
             }
         }
         int dcValue = -1;
-        public int MaxClockSpeed { get; set; }
+        public int MaxClockSpeed 
+        {
+            get => maxClockSpeed;
+            set 
+            {
+                maxClockSpeed = value;
+                DcClockSpeed = $"{((dcValue / 100000f) * value):F2}GHz";
+                AcClockSpeed = $"{((acValue / 100000f) * value):F2}GHz";
+            }
+        }
+        int maxClockSpeed = 0;
 
         public string AcClockSpeed
         { 

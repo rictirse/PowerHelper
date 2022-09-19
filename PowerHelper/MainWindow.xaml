@@ -12,8 +12,7 @@
         <tb:TaskbarIcon x:Name="taskbar"
                         IconSource="/power.ico"
                         ToolTipText="調整效能"
-                        PopupActivation="LeftOrDoubleClick"
-                        PreviewTrayPopupOpen="taskbar_PreviewTrayPopupOpen">
+                        PopupActivation="LeftOrDoubleClick">
             <tb:TaskbarIcon.TrayPopup>
                 <local:PowerSlider/>
             </tb:TaskbarIcon.TrayPopup>

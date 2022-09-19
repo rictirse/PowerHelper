@@ -8,7 +8,7 @@
              mc:Ignorable="d">
 
     <Grid>
-        <Border  Background="{DynamicResource H3}" CornerRadius="10"/>
+        <Border  Background="{DynamicResource H3}" CornerRadius="10" MouseLeave="Border_MouseLeave"/>
         <StackPanel Orientation="Vertical" Margin="10">
             <TextBlock Text="CPU最高使用率調整" Style="{StaticResource TitleStyle}"/>
 
