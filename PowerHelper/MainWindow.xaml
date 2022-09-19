@@ -5,10 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:tb="clr-namespace:Hardcodet.Wpf.TaskbarNotification;assembly=Hardcodet.Wpf.TaskbarNotification.Net6"
         xmlns:local="clr-namespace:PowerHelper"
+        Closing="Window_Closing"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <tb:TaskbarIcon IconSource="/power.ico" ToolTipText="調整效能" PopupActivation="LeftOrDoubleClick">
+        <tb:TaskbarIcon x:Name="taskbar"
+                        IconSource="/power.ico"
+                        ToolTipText="調整效能"
+                        PopupActivation="LeftOrDoubleClick"
+                        PreviewTrayPopupOpen="taskbar_PreviewTrayPopupOpen">
             <tb:TaskbarIcon.TrayPopup>
                 <local:PowerSlider/>
             </tb:TaskbarIcon.TrayPopup>

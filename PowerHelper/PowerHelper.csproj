@@ -11,6 +11,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Converter\**" />
+	  <EmbeddedResource Remove="Converter\**" />
+	  <None Remove="Converter\**" />
+	  <Page Remove="Converter\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="power.ico" />
 	</ItemGroup>
 
@@ -20,10 +27,7 @@
 
 	<ItemGroup>
 	  <PackageReference Include="Hardcodet.Wpf.TaskbarNotification.Net6" Version="1.0.0" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Converter\" />
+	  <PackageReference Include="System.Management" Version="6.0.0" />
 	</ItemGroup>
 
 </Project>

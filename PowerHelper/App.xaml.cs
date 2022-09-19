@@ -18,13 +18,13 @@ namespace PowerHelper
     {
         public static Plan? g_Plan { get; set; }
 
-
-
         public App()
         {
             g_Plan = PowerCfgCli.GetCurrentPowerCfgStatus();
 
             if (g_Plan == null) throw new Exception("取得PowerCfg異常");
+
+            g_Plan.MaxClockSpeed = WMIHelper.GetClockSpeed();
         }
     }
 }

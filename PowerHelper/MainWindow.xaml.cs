@@ -11,7 +11,17 @@ namespace PowerHelper
         public MainWindow()
         {
             InitializeComponent();
-            this.Hide();
+            //this.Hide();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            taskbar.Dispose();
+        }
+
+        private void taskbar_PreviewTrayPopupOpen(object sender, RoutedEventArgs e)
+        {
+            string s = "";
         }
     }
 }

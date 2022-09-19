@@ -13,11 +13,20 @@ namespace PowerHelper.Helpers
         }
 
         /// <summary>
-        /// 設定當前的直流電最高效能的數值
+        /// 設定當前的電池電最高效能的數值
         /// </summary>
-        public static void SetCurrentPowerCfgDcPROCTHROTTLEMAX(int value)
+        public static void SetCurrentDcPROCTHROTTLEMAX(int value)
         {
             var command = $"powercfg -setdcvalueindex SCHEME_CURRENT SUB_PROCESSOR PROCTHROTTLEMAX {value}";
+            ConsoleHelper.CmdCommand(command);
+        }
+
+        /// <summary>
+        /// 設定當前的室電電最高效能的數值
+        /// </summary>
+        public static void SetCurrentAcPROCTHROTTLEMAX(int value)
+        {
+            var command = $"powercfg -setacvalueindex SCHEME_CURRENT SUB_PROCESSOR PROCTHROTTLEMAX {value}";
             ConsoleHelper.CmdCommand(command);
         }
     }
