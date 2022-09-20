@@ -1,5 +1,5 @@
-# Windows 10 / 11 節能調整
-調整處理器電源管理中的最高處理器狀態降低功率，延長筆電續航/桌機溫度與耗電表現
+
+# 工作原理
 ![](https://i.imgur.com/8hLSOVm.png)
 
 * 100%為不受限制，可以達到最高效能
@@ -7,6 +7,12 @@
 * 更低則會限制CPU最高使用率，UI後面的時脈僅共參考
 ![](https://i.imgur.com/Pw1IyDK.png)
 
+# 程式須知
+* 程式開啟後會常駐在右下角的電源符號
+* 沒有關閉按鈕設計，結束需從工作管理員結束(taskkill /f /im powerHeloer.exe)
+* 程式僅能開啟一次
+* 沒有設計常駐功能，如果需要開機自動開啟，在shell:startup內建立捷徑
+![](https://i.imgur.com/zYKb0dR.png)
 
 # 指令
 powercfg 取得當前電源設置，AC(電源)/DC(電池)節能狀況 
