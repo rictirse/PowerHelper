@@ -6,13 +6,17 @@ namespace PowerHelper.Helpers
     {
         public static int GetClockSpeed()
         {
-            var searcher = new ManagementObjectSearcher("select MaxClockSpeed from Win32_Processor");
             uint clockSpeed = 0;
 
-            foreach (var item in searcher.Get())
+            try
             {
-                clockSpeed = (uint)item["MaxClockSpeed"];
+                var searcher = new ManagementObjectSearcher("select MaxClockSpeed from Win32_Processor");
+                foreach (var item in searcher.Get())
+                {
+                    clockSpeed = (uint)item["MaxClockSpeed"];
+                }
             }
+            catch { }
 
             return (int)clockSpeed;
         }

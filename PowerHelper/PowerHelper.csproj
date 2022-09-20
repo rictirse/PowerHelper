@@ -8,21 +8,17 @@
 		<RootNamespace>PowerHelper</RootNamespace>
 		<Product>PowerHelper</Product>
 		<UseWPF>true</UseWPF>
+		<ApplicationIcon>power.ico</ApplicationIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Remove="Converter\**" />
-	  <EmbeddedResource Remove="Converter\**" />
-	  <None Remove="Converter\**" />
-	  <Page Remove="Converter\**" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <None Remove="power.ico" />
+	  <None Remove="TrayPower.ico" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Resource Include="power.ico" />
+	  <Resource Include="TrayPower.ico" />
 	</ItemGroup>
 
 	<ItemGroup>

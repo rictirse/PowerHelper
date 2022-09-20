@@ -1,5 +1,31 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Style x:Key="BaseButton" TargetType="{x:Type ButtonBase}" BasedOn="{x:Null}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="Foreground" Value="{DynamicResource H3}" />
+            </Trigger>
+
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.7"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ImageButton" TargetType="{x:Type ButtonBase}" BasedOn="{x:Null}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Cursor" Value="Hand" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 
     <Style x:Key="BaseBorderStyle" TargetType="{x:Type Border}">
         <Setter Property="Background" Value="{DynamicResource H2}"/>
@@ -13,6 +39,22 @@
                 <Setter Property="Opacity" Value="0.3"/>
             </Trigger>
         </Style.Triggers>
+    </Style>
+
+    <Style x:Key="CancelButton" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource BaseButton}">
+        <Setter Property="Margin" Value="3,0,0,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border>
+                        <Grid Background="{StaticResource AlphaBrush}">
+                            <Path Style="{DynamicResource PathCancel}" Margin="3"/>
+                            <Path Style="{DynamicResource PathFrame}"/>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style x:Key="NUDButtonStyle" TargetType="{x:Type RepeatButton}" BasedOn="{x:Null}">
@@ -41,5 +83,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    
+    
 
 </ResourceDictionary>

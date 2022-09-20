@@ -7,6 +7,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Style/Color.xaml"/>
+                <ResourceDictionary Source="/Images/Icons.xaml"/>
                 <ResourceDictionary Source="/Style/Main.xaml"/>
                 <ResourceDictionary Source="/Style/Btn.xaml"/>
                 <ResourceDictionary Source="/Style/Slider.xaml"/>

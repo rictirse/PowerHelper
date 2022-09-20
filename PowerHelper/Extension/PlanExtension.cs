@@ -1,6 +1,7 @@
 ﻿using PowerHelper.ViewModel;
 using System;
 using System.Linq;
+using System.Reflection;
 
 namespace PowerHelper.Extension
 {
@@ -21,7 +22,7 @@ namespace PowerHelper.Extension
             }
         }
 
-        public static Plan? ParserToPlan(this string cmdStr)
+        public static (int acValue, int dcValue) ParserToValue(this string cmdStr)
         {
             var lines = cmdStr.Split("\r\n").ToArray();
             var index = lines.Select((x, i) => new { line = x, index = i++ })
@@ -29,22 +30,32 @@ namespace PowerHelper.Extension
                 .Select(x => x.index)
                 .SingleOrDefault();
 
-            if (index == 0 
-                || index + 6 > lines.Length) return null;
+            if (index == 0
+                || index + 6 > lines.Length) return (0, 0);
 
             try
             {
-                return new Plan
-                {
-                    AcValue = lines[index + 5].TryGetValue(),
-                    DcValue = lines[index + 6].TryGetValue(),
-                    Name    = "PROCTHROTTLEMAX"
-                };
+                var acValue = lines[index + 5].TryGetValue();
+                var dcValue = lines[index + 6].TryGetValue();
+                
+                return (acValue, dcValue);
             }
             catch
             {
-                return null;
+                return (0, 0);
             }
+        }
+
+        public static Plan? ParserToPlan(this string cmdStr)
+        {
+            var result = cmdStr.ParserToValue();
+
+            return new Plan
+            {
+                AcValue = result.acValue,
+                DcValue = result.dcValue,
+                Name    = "PROCTHROTTLEMAX"
+            };
         }
     }
 }

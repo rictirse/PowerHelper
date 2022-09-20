@@ -11,6 +11,7 @@ namespace PowerHelper
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = App.g_Plan;
             this.Hide();
         }
 

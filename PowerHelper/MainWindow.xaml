@@ -8,9 +8,11 @@
         Closing="Window_Closing"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+
+
     <Grid>
         <tb:TaskbarIcon x:Name="taskbar"
-                        IconSource="/power.ico"
+                        IconSource="/TrayPower.ico"
                         ToolTipText="調整效能"
                         PopupActivation="LeftOrDoubleClick">
             <tb:TaskbarIcon.TrayPopup>

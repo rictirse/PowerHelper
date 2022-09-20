@@ -2,7 +2,9 @@
 using PowerHelper.ViewModel;
 using System;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 
 namespace PowerHelper
 {
@@ -16,20 +18,21 @@ namespace PowerHelper
 
         public App()
         {
-            Startup += App_Startup;
-            g_Plan = PowerCfgCli.GetCurrentPowerCfgStatus();
-
-            if (g_Plan == null) throw new Exception("取得PowerCfg異常");
+            Startup += async (s, e) => await App_Startup(s, e);
+            g_Plan = new Plan();
 
             g_Plan.MaxClockSpeed = WMIHelper.GetClockSpeed();
         }
 
-        private void App_Startup(object sender, StartupEventArgs e)
+        private async Task App_Startup(object sender, StartupEventArgs e)
         {
-            bool ret;
-            Mutex = new Mutex(true, "PowerHelper", out ret);
-
+            Mutex = new Mutex(true, "PowerHelper", out var ret);
             if (!ret) Environment.Exit(0);
+
+            var value = await PowerCfgCli.GetCurrentPowerCfgPlan();
+
+            g_Plan!.AcValue = value.acValue;
+            g_Plan!.DcValue = value.dcValue;
         }
     }
 }
